@@ -27,7 +27,7 @@ jobs:
           npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json
           npx marge cypress/reports/report.json -f report -o cypress/reports/html
       - name: Upload test artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.1
         if: always()
         with:
           name: cypress-results
