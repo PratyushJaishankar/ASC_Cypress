@@ -24,9 +24,8 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
+        uses: npx cypress run --browser chrome --headless
+
 
       - name: Generate HTML report
         run: |
