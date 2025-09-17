@@ -1,0 +1,219 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-17T18:51:58.327Z",
+    "end": "2025-09-17T18:52:03.309Z",
+    "duration": 4982,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1d7cab10-56ac-422c-bda3-2f7e47d9d165",
+      "title": "",
+      "fullFile": "cypress\\e2e\\saucedemo\\network.cy.js",
+      "file": "cypress\\e2e\\saucedemo\\network.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+          "title": "Notes API Tests with Fixtures",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should register a new user",
+              "fullTitle": "Notes API Tests with Fixtures Should register a new user",
+              "timedOut": null,
+              "duration": 920,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: `${baseUrl}/users/register`,\n  form: true,\n  body: {\n    name: testUser.name,\n    email: testUser.email,\n    password: testUser.password\n  }\n}).then(res => {\n  expect(res.status).to.eq(201);\n  expect(res.body.success).to.be.true;\n  expect(res.body.data).to.have.property('email', testUser.email);\n});",
+              "err": {},
+              "uuid": "60115133-c126-430a-8ca5-476b7e0d826e",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should login with registered user",
+              "fullTitle": "Notes API Tests with Fixtures Should login with registered user",
+              "timedOut": null,
+              "duration": 593,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: `${baseUrl}/users/login`,\n  form: true,\n  body: {\n    email: testUser.email,\n    password: testUser.password\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.success).to.be.true;\n  authToken = res.body.data.token;\n  expect(authToken).to.not.be.empty;\n});",
+              "err": {},
+              "uuid": "b2b8803e-31b4-4946-b4ca-c2c451ab4883",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should create a new note",
+              "fullTitle": "Notes API Tests with Fixtures Should create a new note",
+              "timedOut": null,
+              "duration": 774,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: `${baseUrl}/notes`,\n  form: true,\n  headers: {\n    'x-auth-token': authToken\n  },\n  body: testNote\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.success).to.be.true;\n  expect(res.body.data.title).to.eq(testNote.title);\n  noteId = res.body.data.id;\n});",
+              "err": {},
+              "uuid": "08b85be9-7caf-492c-8ab8-f00b02dd8b04",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should fetch all notes",
+              "fullTitle": "Notes API Tests with Fixtures Should fetch all notes",
+              "timedOut": null,
+              "duration": 714,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/notes`,\n  headers: {\n    'x-auth-token': authToken\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.success).to.be.true;\n  expect(res.body.data.length).to.be.greaterThan(0);\n});",
+              "err": {},
+              "uuid": "fd60abf5-e104-4b84-95e7-fbc83cab038d",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should update the note",
+              "fullTitle": "Notes API Tests with Fixtures Should update the note",
+              "timedOut": null,
+              "duration": 582,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'PUT',\n  url: `${baseUrl}/notes/${noteId}`,\n  form: true,\n  headers: {\n    'x-auth-token': authToken\n  },\n  body: {\n    title: 'Updated Title',\n    description: 'Updated Description',\n    category: 'Work',\n    completed: true\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.data.title).to.eq('Updated Title');\n  expect(res.body.data.completed).to.be.true;\n});",
+              "err": {},
+              "uuid": "414d5b3f-59f4-4f1c-ae42-dc88b730d232",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should delete the note",
+              "fullTitle": "Notes API Tests with Fixtures Should delete the note",
+              "timedOut": null,
+              "duration": 556,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: `${baseUrl}/notes/${noteId}`,\n  headers: {\n    'x-auth-token': authToken\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.success).to.be.true;\n});",
+              "err": {},
+              "uuid": "c8ba243c-cb0f-444b-8f04-6a21f67199fc",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should logout the user",
+              "fullTitle": "Notes API Tests with Fixtures Should logout the user",
+              "timedOut": null,
+              "duration": 578,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: `${baseUrl}/users/logout`,\n  headers: {\n    'x-auth-token': authToken\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.success).to.be.true;\n});",
+              "err": {},
+              "uuid": "0c0ac50a-3401-4236-8f76-3bc4cb7b2535",
+              "parentUUID": "a0fc1e63-2fcd-48cb-9a89-8e3cc6eadc01",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "60115133-c126-430a-8ca5-476b7e0d826e",
+            "b2b8803e-31b4-4946-b4ca-c2c451ab4883",
+            "08b85be9-7caf-492c-8ab8-f00b02dd8b04",
+            "fd60abf5-e104-4b84-95e7-fbc83cab038d",
+            "414d5b3f-59f4-4f1c-ae42-dc88b730d232",
+            "c8ba243c-cb0f-444b-8f04-6a21f67199fc",
+            "0c0ac50a-3401-4236-8f76-3bc4cb7b2535"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4717,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

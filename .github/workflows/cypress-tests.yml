@@ -40,16 +40,22 @@ jobs:
           path: cypress/reports/html
 
   # ✅ Deploy report to GitHub Pages
-  deploy:
+  deploy-html-report:
     needs: cypress-run
     runs-on: ubuntu-latest
-    permissions:
-      pages: write      # ✅ needed for GitHub Pages
-      id-token: write   # ✅ needed for OIDC
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    if: always() # ensures it runs even if tests fail
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download HTML report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: html-report
+          path: ./html-report
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
