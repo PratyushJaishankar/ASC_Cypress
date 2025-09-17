@@ -1,6 +1,6 @@
 describe('SauceDemo Tests for Multiple Users', () => {
     it('runs tests for each user in users.json', () => {
-        cy.fixture('users').then((users) => {
+        cy.fixture('test_users').then((users) => {
             cy.task('log', users);  // 👈 Will print in GitHub Actions logs
             expect(users).to.exist;
             users.forEach((user, index) => {
