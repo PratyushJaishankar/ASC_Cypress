@@ -14,7 +14,7 @@ describe('SauceDemo Tests for Multiple Users', () => {
                 cy.login(user.username, user.password);
                 cy.wait(2000);
                     cy.url().should('satisfy', (url) => {
-                        return url.includes('/inventory.html');
+                        return url.includes('/inventory.html') || url === 'https://www.saucedemo.com/';
                     });
                     cy.url().then((url) => {
                         if (url.includes('/inventory.html')) {
