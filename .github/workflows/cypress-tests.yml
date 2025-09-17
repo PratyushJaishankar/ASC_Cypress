@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: html-report
-          path: cypress/reports/html
+          path: cypress/reports/html/*
 
   # ✅ Deploy report to GitHub Pages
   deploy-html-report:
