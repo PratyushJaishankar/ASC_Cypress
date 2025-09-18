@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-18T04:08:04.431Z",
+    "end": "2025-09-18T04:08:09.150Z",
+    "duration": 4719,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "95d251d8-10f3-4611-ba15-8b27f6b1902f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\saucedemo\\assertion.cy.js",
+      "file": "cypress\\e2e\\saucedemo\\assertion.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ad3d6a0b-4bf6-41ee-909b-a98690cc119a",
+          "title": "Sauce Demo Spec",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "saucedemo",
+              "fullTitle": "Sauce Demo Spec saucedemo",
+              "timedOut": null,
+              "duration": 2640,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.saucedemo.com/');\n// Login\ncy.get('[data-test=\"username\"]').clear().type('standard_user').should('have.value', 'standard_user');\ncy.get('[data-test=\"password\"]').clear().type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\n// Verify item exists\ncy.get('#add-to-cart-sauce-labs-backpack').should('exist');\n// Burger menu visibility toggle\ncy.get('.bm-menu-wrap').should('exist');\ncy.get('.bm-menu-wrap').should('not.be.visible');\ncy.get('.bm-burger-button').click();\ncy.get('.bm-menu-wrap').should('be.visible');\n// Text content checks\ncy.get('.app_logo').should('have.text', 'Swag Labs');\ncy.xpath('//*[@id=\"item_4_title_link\"]/div').should('include.text', 'Sauce Labs');\ncy.get('.app_logo').should('not.have.text', 'Swag Labs Backpack');\ncy.xpath('//*[@id=\"item_0_title_link\"]/div').should('contain', 'Bike Light');\ncy.xpath('//*[@id=\"inventory_container\"]/div/div[2]/div[2]/div[2]/div').invoke('text').should('match', /^\\$\\d+\\.\\d{2}$/); // Regex check for price format\n// Attribute checks\ncy.get('#item_4_title_link').should('have.attr', 'href', '#');\ncy.get('#item_4_title_link').should('not.have.attr', 'target');\n// CSS class checks\ncy.get('[data-test=\"inventory-container\"]').should('have.class', 'inventory_container');\ncy.get('[data-test=\"inventory-container\"]').should('not.have.class', 'inactive');\n// Input value (checkbox)\n// cy.get('input[type=\"checkbox\"]').should('exist').then(($checkbox) => {\n//   if ($checkbox.is(':checked')) {\n//     cy.wrap($checkbox).should('be.checked');\n//   } else {\n//     cy.wrap($checkbox).should('not.be.checked');\n//   }\n// });\n// Length checks\ncy.get('.app_logo').should('have.length', 1);\ncy.get('.app_logo').should('have.length.greaterThan', 0);\n// Chained assertions\ncy.get('#add-to-cart-sauce-labs-backpack').should('be.visible').and('have.text', 'Add to cart').and('not.have.class', 'disabled');\n//asserting against a function\ncy.get('.inventory_item_name ').should($list => {\n  console.log($list.length);\n  expect($list).to.have.length(6);\n  expect($list.first()).to.contain('Sauce Labs Backpack');\n});\n// URL checks\ncy.url().should('include', '/inventory.html');\ncy.url().should('eq', 'https://www.saucedemo.com/inventory.html');",
+              "err": {},
+              "uuid": "5a90e682-9e09-4f45-91f2-626e638c65e0",
+              "parentUUID": "ad3d6a0b-4bf6-41ee-909b-a98690cc119a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a90e682-9e09-4f45-91f2-626e638c65e0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2640,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

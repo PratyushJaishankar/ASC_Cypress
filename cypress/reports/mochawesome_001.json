@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-18T04:07:17.985Z",
+    "end": "2025-09-18T04:08:02.119Z",
+    "duration": 44134,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "677ff7e5-db6d-45df-9049-a0cc8beffecd",
+      "title": "",
+      "fullFile": "cypress\\e2e\\saucedemo\\actions.cy.js",
+      "file": "cypress\\e2e\\saucedemo\\actions.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "719a2754-2465-4443-bcdb-4abbbe904359",
+          "title": "Actions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Type and Clear",
+              "fullTitle": "Actions Type and Clear",
+              "timedOut": null,
+              "duration": 10027,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practice.expandtesting.com/');\ncy.get('a.btn.btn-outline-primary').contains('Try it out').first().click();\n// Login\ncy.get('#input-number').clear().type('31415').should('have.value', '31415');\ncy.get('#input-number').clear().type('55555').should('have.value', '55555');\ncy.get('#input-text').clear().type('random').should('have.value', 'random');\ncy.get('#input-password', {\n  timeout: 10000\n}).clear().type('ggwp').should('have.value', 'ggwp');",
+              "err": {},
+              "uuid": "4a39c0e1-8b15-4781-901e-ee4f10df7dc1",
+              "parentUUID": "719a2754-2465-4443-bcdb-4abbbe904359",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Checkbox",
+              "fullTitle": "Actions Checkbox",
+              "timedOut": null,
+              "duration": 11992,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practice.expandtesting.com/checkboxes');\ncy.wait(2000);\ncy.get('#checkbox1').check().should('be.checked');\ncy.wait(2000);\ncy.get('#checkbox2').check().should('be.checked');\ncy.wait(2000);\ncy.get('#checkbox1').uncheck().should('not.be.checked');\ncy.wait(2000);\ncy.get('#checkbox2').uncheck().should('not.be.checked');\ncy.wait(2000);",
+              "err": {},
+              "uuid": "7359e6f0-2ba6-4f92-9c55-69354be095ad",
+              "parentUUID": "719a2754-2465-4443-bcdb-4abbbe904359",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Radio Checkbox",
+              "fullTitle": "Actions Radio Checkbox",
+              "timedOut": null,
+              "duration": 12505,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practice.expandtesting.com/radio-buttons');\ncy.wait(2000);\ncy.get('#blue').check().should('be.checked');\ncy.wait(2000);\ncy.get('#red').check().should('be.checked');\ncy.wait(2000);\ncy.get('#yellow').check().should('be.checked');\ncy.wait(2000);\ncy.get('#black').check().should('be.checked');\ncy.wait(2000);",
+              "err": {},
+              "uuid": "b692655b-34bb-4956-a2eb-97460e12d6ca",
+              "parentUUID": "719a2754-2465-4443-bcdb-4abbbe904359",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Select",
+              "fullTitle": "Actions Select",
+              "timedOut": null,
+              "duration": 2383,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practice.expandtesting.com/locators');\ncy.get('#countrySelect').select('Japan').should('have.value', 'Japan');\ncy.get('#countrySelect').select('France').should('have.value', 'France');",
+              "err": {},
+              "uuid": "377020cd-7af0-4e8c-9cbb-e44880b0e7e0",
+              "parentUUID": "719a2754-2465-4443-bcdb-4abbbe904359",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mouse",
+              "fullTitle": "Actions Mouse",
+              "timedOut": null,
+              "duration": 1756,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practice.expandtesting.com/tooltips');\ncy.get('.tooltip').should('not.exist');\ncy.get('#btn1').trigger('mouseover');\ncy.wait(200); // let the tooltip render\ncy.get('.tooltip').should('be.visible');",
+              "err": {},
+              "uuid": "b9ce9040-6b58-4cc6-89cb-02988490fe1b",
+              "parentUUID": "719a2754-2465-4443-bcdb-4abbbe904359",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4a39c0e1-8b15-4781-901e-ee4f10df7dc1",
+            "7359e6f0-2ba6-4f92-9c55-69354be095ad",
+            "b692655b-34bb-4956-a2eb-97460e12d6ca",
+            "377020cd-7af0-4e8c-9cbb-e44880b0e7e0",
+            "b9ce9040-6b58-4cc6-89cb-02988490fe1b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 38663,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

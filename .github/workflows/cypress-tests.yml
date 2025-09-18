@@ -34,11 +34,14 @@ jobs:
           npx marge cypress/reports/report.json -f report -o cypress/reports/html
 
       # ✅ Upload report as a GitHub Pages artifact
-      - name: Upload report for Pages
-        uses: actions/upload-pages-artifact@v3
+      
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: html-report
-          path: cypress/reports/html/*
+          path: cypress/reports/html/
+          retention-days: 7
 
   # ✅ Deploy report to GitHub Pages
   deploy-html-report:
