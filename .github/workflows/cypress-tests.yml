@@ -32,6 +32,7 @@ jobs:
           mkdir -p cypress/reports
           npx mochawesome-merge cypress/reports/mochawesome*.json > cypress/reports/report.json
           npx marge cypress/reports/report.json -f report -o cypress/reports/html
+          mv cypress/reports/html/report.html cypress/reports/html/index.html
 
       # ✅ Upload report as a GitHub Pages artifact
       
